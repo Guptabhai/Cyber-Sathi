@@ -1,396 +1,890 @@
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
-
-#cyberStore {
-  --cyan: #00e5ff;
-  font-family: 'Poppins', sans-serif;
-  color: #f5fbff;
-  background:
-    radial-gradient(ellipse at 75% 50%, #06465a70, transparent 42%),
-    linear-gradient(135deg,#06121f,#0b2635 55%,#020a12);
-  width: 100%;
-  min-height: 100vh;
-  overflow: hidden;
-  box-sizing: border-box;
-}
-#cyberStore * { box-sizing: border-box; }
-#cyberStore a { text-decoration: none; }
-
-#cyberStore .nav {
-  max-width: 1200px;
-  margin: auto;
-  padding: 22px 28px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-}
-#cyberStore .brand {
-  color: white;
-  font-size: 21px;
-  font-weight: 800;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-#cyberStore .brandIcon {
-  color: var(--cyan);
-  font-size: 29px;
-}
-#cyberStore .navBtn {
-  color: white;
-  background: linear-gradient(120deg,#087ed8,#00bde9);
-  padding: 12px 18px;
-  border-radius: 30px;
-  font-size: 13px;
-  font-weight: 600;
-}
-#cyberStore .hero {
-  max-width: 1200px;
-  min-height: 570px;
-  padding: 65px 28px 75px;
-  margin: auto;
-  display: grid;
-  grid-template-columns: 1.15fr .85fr;
-  gap: 25px;
-  align-items: center;
-}
-#cyberStore .eyebrow {
-  display: inline-block;
-  color: #7cecff;
-  border: 1px solid #00e5ff35;
-  background: #00e5ff0c;
-  padding: 8px 13px;
-  border-radius: 30px;
-  font-size: 12px;
-  margin-bottom: 24px;
-}
-#cyberStore h1 {
-  color: #f5fbff;
-  font-size: clamp(36px,5vw,65px);
-  line-height: 1.17;
-  letter-spacing: -1.5px;
-  margin: 0 0 22px;
-  font-weight: 800;
-}
-#cyberStore .gradientText {
-  background: linear-gradient(90deg,#00e5ff,#78f5ff);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-#cyberStore .subtitle {
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 1.7;
-  margin-bottom: 14px;
-}
-#cyberStore .description {
-  color: #b9cbd8;
-  font-size: 14px;
-  line-height: 1.9;
-}
-#cyberStore .actions {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-top: 28px;
-}
-#cyberStore .btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 9px;
-  padding: 15px 21px;
-  border-radius: 14px;
-  font-size: 13px;
-  font-weight: 700;
-  transition: .25s;
-}
-#cyberStore .btn:hover {
-  transform: translateY(-3px);
-}
-#cyberStore .primary {
-  color: #00131b;
-  background: linear-gradient(110deg,#00e5ff,#54baff);
-  box-shadow: 0 8px 28px #00d9ff30;
-}
-#cyberStore .secondary {
-  color: white;
-  background: #ffffff0b;
-  border: 1px solid #ffffff26;
-}
-#cyberStore .visual {
-  min-height: 340px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-#cyberStore .orbit {
-  width: min(320px,85%);
-  aspect-ratio: 1;
-  border: 1px dashed #00e5ff55;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  animation: cyberPulse 4s ease-in-out infinite;
-}
-#cyberStore .orbit:before,
-#cyberStore .orbit:after {
-  content: "";
-  position: absolute;
-  border: 1px solid #00e5ff24;
-  border-radius: 50%;
-}
-#cyberStore .orbit:before { inset: 22px; }
-#cyberStore .orbit:after { inset: 48px; }
-#cyberStore .shield {
-  width: 155px;
-  height: 175px;
-  clip-path: polygon(50% 0%,94% 17%,92% 57%,78% 81%,50% 100%,22% 81%,8% 57%,6% 17%);
-  background: linear-gradient(145deg,#00f0ff,#00a8dc 75%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: #003b52;
-  filter: drop-shadow(0 0 25px #00e5ff65);
-  position: relative;
-  z-index: 1;
-}
-#cyberStore .lock {
-  font-size: 60px;
-  line-height: 1;
-}
-#cyberStore .shieldText {
-  font-size: 10px;
-  font-weight: 800;
-  margin-top: 10px;
-}
-#cyberStore .dot {
-  position: absolute;
-  width: 11px;
-  height: 11px;
-  border-radius: 50%;
-  background: var(--cyan);
-  box-shadow: 0 0 16px var(--cyan);
-}
-#cyberStore .d1 { top: 12%; left: 20%; }
-#cyberStore .d2 { top: 8%; right: 23%; }
-#cyberStore .d3 { bottom: 18%; left: 12%; }
-#cyberStore .d4 { bottom: 12%; right: 16%; }
-
-#cyberStore .services {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 24px 55px;
-  display: grid;
-  grid-template-columns: repeat(3,minmax(0,1fr));
-  gap: 18px;
-}
-#cyberStore .service {
-  padding: 23px;
-  background: #ffffff08;
-  border: 1px solid #6eeeff25;
-  border-radius: 18px;
-}
-#cyberStore .serviceIcon {
-  font-size: 27px;
-  margin-bottom: 12px;
-}
-#cyberStore .service h3 {
-  color: #f5fbff;
-  margin: 0 0 9px;
-  font-size: 16px;
-}
-#cyberStore .service p {
-  color: #a9bfce;
-  font-size: 13px;
-  line-height: 1.8;
-  margin: 0;
-}
-#cyberStore .notice {
-  max-width: 1050px;
-  margin: 0 auto 30px;
-  padding: 18px 22px;
-  width: calc(100% - 40px);
-  border: 1px solid #00e5ff25;
-  border-radius: 15px;
-  background: #00e5ff08;
-  color: #c6dce8;
-  font-size: 12px;
-  line-height: 1.8;
-}
-#cyberStore .notice strong { color: #69edff; }
-#cyberStore .footer {
-  text-align: center;
-  padding: 25px 18px;
-  color: #91a9b9;
-  border-top: 1px solid #ffffff12;
-  font-size: 12px;
-  line-height: 1.8;
-}
-#cyberStore .footer a { color: #65eaff; }
-
-@keyframes cyberPulse {
-  0%,100% { transform: scale(1); }
-  50% { transform: scale(1.035); }
-}
-
-@media(max-width:760px) {
-  #cyberStore .nav { padding: 18px 16px; }
-  #cyberStore .brand { font-size: 18px; }
-  #cyberStore .navBtn { padding: 10px 12px; font-size: 11px; }
-  #cyberStore .hero {
-    grid-template-columns: 1fr;
-    padding: 48px 20px 35px;
-    gap: 10px;
-  }
-  #cyberStore h1 {
-    font-size: clamp(35px,9vw,48px);
-    letter-spacing: -1px;
-  }
-  #cyberStore .subtitle { font-size: 16px; }
-  #cyberStore .description { font-size: 13px; }
-  #cyberStore .visual { min-height: 300px; }
-  #cyberStore .orbit { width: 265px; }
-  #cyberStore .shield { width: 135px; height: 155px; }
-  #cyberStore .services {
-    grid-template-columns: 1fr;
-    padding: 0 18px 35px;
-  }
-  #cyberStore .service { padding: 20px; }
-  #cyberStore .btn { padding: 14px 16px; }
-}
-@media(prefers-reduced-motion:reduce) {
-  #cyberStore .orbit { animation: none; }
-  #cyberStore .btn { transition: none; }
-}
-</style>
-
 <div id="cyberStore">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
 
-  <header class="nav">
-    <a class="brand" href="#cyberHome">
-      <span class="brandIcon">⬟</span>
-      <span>Cyber Store</span>
+    #cyberStore {
+      --bg: #020815;
+      --card: #061427;
+      --border: #172b40;
+      --cyan: #36d9ed;
+      --blue: #079ee7;
+      --muted: #9aafc0;
+      font-family: 'Poppins', sans-serif;
+      background:
+        radial-gradient(ellipse at 15% 10%, #00303b 0%, transparent 35%),
+        radial-gradient(ellipse at 90% 45%, #001c30 0%, transparent 35%),
+        var(--bg);
+      color: #eaf4ff;
+      width: 100%;
+      overflow: hidden;
+      line-height: 1.7;
+      box-sizing: border-box;
+    }
+
+    #cyberStore * { box-sizing: border-box; }
+    #cyberStore a { text-decoration: none; color: inherit; }
+    #cyberStore .container {
+      width: 100%;
+      max-width: 1120px;
+      margin: auto;
+      padding: 0 22px;
+    }
+
+    #cyberStore .nav {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 18px 22px;
+      background: rgba(2, 10, 23, .94);
+      border-bottom: 1px solid #173044;
+    }
+
+    #cyberStore .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 21px;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    #cyberStore .brandIcon {
+      font-size: 31px;
+      color: var(--cyan);
+    }
+
+    #cyberStore .navBtn {
+      padding: 12px 17px;
+      border-radius: 40px;
+      background: linear-gradient(110deg, #06c9ec, #078dd5);
+      color: white;
+      font-size: 13px;
+      font-weight: 700;
+      box-shadow: 0 0 24px #00c8ef35;
+      text-align: center;
+    }
+
+    #cyberStore .hero {
+      padding: 75px 0 65px;
+    }
+
+    #cyberStore .trustTag {
+      display: inline-flex;
+      gap: 9px;
+      align-items: center;
+      color: var(--cyan);
+      border: 1px solid #234254;
+      border-radius: 50px;
+      padding: 8px 16px;
+      font-size: 13px;
+      margin-bottom: 25px;
+      background: #061729;
+    }
+
+    #cyberStore h1 {
+      font-size: clamp(34px, 6vw, 66px);
+      line-height: 1.17;
+      letter-spacing: -1.6px;
+      margin: 0 0 24px;
+      font-weight: 800;
+    }
+
+    #cyberStore .gradientText {
+      background: linear-gradient(90deg, #9ef5ff, #00b9e7);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    #cyberStore .lead {
+      font-size: 19px;
+      color: #d0dce7;
+      margin: 0 0 15px;
+    }
+
+    #cyberStore .muted {
+      color: var(--muted);
+    }
+
+    #cyberStore .heroActions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+      margin-top: 30px;
+    }
+
+    #cyberStore .telegramBtn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 11px;
+      width: 100%;
+      padding: 17px 18px;
+      border-radius: 50px;
+      background: linear-gradient(110deg, #05c5ec, #078fd7);
+      border: 1px solid #38d9ff;
+      color: white;
+      font-size: 16px;
+      font-weight: 700;
+      box-shadow: 0 9px 30px #00bdec35;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    #cyberStore .telegramBtn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 35px #00bdec55;
+    }
+
+    #cyberStore .secondaryBtn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 23px;
+      border: 1px solid #20354c;
+      border-radius: 45px;
+      background: #061326;
+      font-weight: 600;
+    }
+
+    #cyberStore .section {
+      padding: 72px 0;
+    }
+
+    #cyberStore .sectionHead {
+      max-width: 760px;
+      margin: 0 auto 42px;
+      text-align: center;
+    }
+
+    #cyberStore .eyebrow {
+      color: var(--cyan);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+
+    #cyberStore h2 {
+      font-size: clamp(29px, 4.5vw, 46px);
+      line-height: 1.25;
+      margin: 13px 0 18px;
+      font-weight: 800;
+    }
+
+    #cyberStore .sectionDesc {
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    #cyberStore .shieldArt {
+      max-width: 430px;
+      height: 300px;
+      margin: 0 auto 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    #cyberStore .orbit {
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      border: 1px dashed #185066;
+      border-radius: 50%;
+      box-shadow: 0 0 0 28px #061c2c50;
+    }
+
+    #cyberStore .shield {
+      z-index: 1;
+      width: 155px;
+      height: 180px;
+      clip-path: polygon(50% 0, 94% 17%, 91% 66%, 76% 84%, 50% 100%, 24% 84%, 9% 66%, 6% 17%);
+      background: linear-gradient(145deg, #39e2f0, #0087d4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 63px;
+      color: #021020;
+      filter: drop-shadow(0 0 25px #00c9ff50);
+    }
+
+    #cyberStore .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    #cyberStore .card {
+      min-width: 0;
+      padding: 28px;
+      background: linear-gradient(145deg, #07182b, #041020);
+      border: 1px solid var(--border);
+      border-radius: 25px;
+      box-shadow: 0 10px 30px #00000012;
+    }
+
+    #cyberStore .serviceIcon {
+      width: 57px;
+      height: 57px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 17px;
+      background: #0b3045;
+      font-size: 29px;
+      margin-bottom: 22px;
+    }
+
+    #cyberStore .card h3 {
+      font-size: 21px;
+      line-height: 1.4;
+      margin: 0 0 13px;
+    }
+
+    #cyberStore .card p {
+      color: var(--muted);
+      margin: 0 0 22px;
+      font-size: 15px;
+      overflow-wrap: anywhere;
+    }
+
+    #cyberStore .cardActions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    #cyberStore .outlineBtn {
+      color: var(--cyan);
+      border: 1px solid #246075;
+      padding: 9px 16px;
+      border-radius: 35px;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    #cyberStore .askLink {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    #cyberStore .steps {
+      display: grid;
+      gap: 18px;
+    }
+
+    #cyberStore .stepNumber {
+      color: #08628d;
+      font-size: 54px;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+
+    #cyberStore .features {
+      display: grid;
+      gap: 14px;
+    }
+
+    #cyberStore .feature {
+      display: flex;
+      align-items: center;
+      gap: 17px;
+      padding: 20px;
+      border-radius: 19px;
+      border: 1px solid var(--border);
+      background: #061326;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    #cyberStore .featureIcon {
+      flex: 0 0 49px;
+      height: 49px;
+      border-radius: 14px;
+      background: #093046;
+      color: var(--cyan);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 23px;
+    }
+
+    #cyberStore .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    #cyberStore .stat {
+      padding: 25px 12px;
+      text-align: center;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      background: #061326;
+    }
+
+    #cyberStore .stat strong {
+      display: block;
+      color: #f6c15d;
+      font-size: 18px;
+      overflow-wrap: anywhere;
+    }
+
+    #cyberStore .stat span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    #cyberStore .reviewBox {
+      text-align: center;
+      padding: 38px 25px;
+    }
+
+    #cyberStore .reviewIcon {
+      font-size: 48px;
+      color: var(--cyan);
+      margin-bottom: 12px;
+    }
+
+    #cyberStore .notice {
+      border: 1px solid #25465a;
+      background: #061a2b;
+      color: #b9cad9;
+      padding: 20px;
+      border-radius: 17px;
+      font-size: 13px;
+      margin-top: 25px;
+    }
+
+    #cyberStore .faq details {
+      background: #061326;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      padding: 18px;
+      margin-bottom: 12px;
+    }
+
+    #cyberStore .faq summary {
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    #cyberStore .faq details p {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 12px 0 0;
+    }
+
+    #cyberStore .footer {
+      border-top: 1px solid var(--border);
+      padding: 38px 20px 110px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    #cyberStore .stickyTelegram {
+      position: fixed;
+      z-index: 99999;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      padding: 13px 16px max(13px, env(safe-area-inset-bottom));
+      background: rgba(2, 10, 23, .96);
+      border-top: 1px solid #163349;
+      backdrop-filter: blur(12px);
+    }
+
+    #cyberStore .stickyTelegram .telegramBtn {
+      max-width: 850px;
+      margin: 0 auto;
+      padding: 15px;
+      font-size: 15px;
+    }
+
+    #cyberStore [id] {
+      scroll-margin-top: 25px;
+    }
+
+    @media(min-width: 760px) {
+      #cyberStore .hero {
+        padding: 95px 0;
+      }
+      #cyberStore .heroGrid {
+        display: grid;
+        grid-template-columns: 1.2fr .8fr;
+        align-items: center;
+        gap: 35px;
+      }
+      #cyberStore .shieldArt {
+        margin: auto;
+      }
+      #cyberStore .steps {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+      #cyberStore .stickyTelegram {
+        padding: 12px 20px;
+      }
+    }
+
+    @media(max-width: 520px) {
+      #cyberStore .container {
+        padding: 0 18px;
+      }
+      #cyberStore .nav {
+        padding: 15px 17px;
+      }
+      #cyberStore .brand {
+        font-size: 17px;
+      }
+      #cyberStore .navBtn {
+        padding: 11px 12px;
+        font-size: 11px;
+      }
+      #cyberStore .hero {
+        padding: 48px 0 45px;
+      }
+      #cyberStore h1 {
+        font-size: 36px;
+        letter-spacing: -.8px;
+      }
+      #cyberStore .lead {
+        font-size: 17px;
+      }
+      #cyberStore .section {
+        padding: 55px 0;
+      }
+      #cyberStore .grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+      #cyberStore .card {
+        padding: 23px;
+        border-radius: 23px;
+      }
+      #cyberStore .stats {
+        grid-template-columns: 1fr;
+      }
+      #cyberStore .shieldArt {
+        height: 255px;
+        margin-bottom: 35px;
+      }
+      #cyberStore .orbit {
+        width: 220px;
+        height: 220px;
+      }
+      #cyberStore .shield {
+        width: 130px;
+        height: 150px;
+      }
+    }
+  </style>
+
+  <!-- Replace this URL with your real Telegram channel -->
+  <div class="nav">
+    <a class="brand" href="#csHome">
+      <span class="brandIcon">🛡</span>
+      <span>Cyber<br>Store</span>
     </a>
-
-    <a class="navBtn"
-       href="https://t.me/YOUR_CHANNEL"
+    <a class="navBtn csTelegram" href="https://t.me/YOUR_CHANNEL"
        target="_blank" rel="noopener noreferrer">
-      ➤ &nbsp; Join Our Telegram
+      ✈ Join Our Telegram
     </a>
-  </header>
+  </div>
 
-  <section class="hero" id="cyberHome">
+  <!-- HERO -->
+  <section class="hero" id="csHome">
+    <div class="container heroGrid">
+      <div>
+        <div class="trustTag">🛡 Trusted Cyber Help</div>
+        <h1>
+          Cyber Account
+          <span class="gradientText">Recovery</span>
+          &amp; Trusted Cyber Help
+        </h1>
+        <p class="lead">
+          Need Help Recovering Your Account?
+          We're Here to Guide You.
+        </p>
+        <p class="muted">
+          Lost access to Instagram, Facebook, WhatsApp,
+          Telegram or Gmail? We can help you understand
+          official and secure recovery procedures.
+        </p>
 
-    <div class="heroContent">
-      <div class="eyebrow">◈ &nbsp; Trusted Cyber Help</div>
-
-      <h1>
-        Cyber Account<br>
-        <span class="gradientText">Recovery</span> &amp; Trusted<br>
-        Cyber Help
-      </h1>
-
-      <div class="subtitle">
-        Need Help Recovering Your Account? We're Here to Guide You.
+        <div class="heroActions">
+          <a class="telegramBtn csTelegram"
+             href="https://t.me/YOUR_CHANNEL"
+             target="_blank" rel="noopener noreferrer">
+            ✈ Join Our Telegram Channel
+          </a>
+          <a class="secondaryBtn" href="#csServices">
+            Explore Our Services →
+          </a>
+        </div>
       </div>
 
-      <div class="description">
-        Instagram, Facebook, WhatsApp, Telegram या Gmail अकाउंट का
-        एक्सेस खो गया है? सही और सुरक्षित रिकवरी प्रक्रिया समझने में
-        हम आपकी मदद कर सकते हैं।
+      <div class="shieldArt" aria-label="Cybersecurity shield illustration">
+        <div class="orbit"></div>
+        <div class="shield">🔒</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section" id="csServices">
+    <div class="container">
+      <div class="sectionHead">
+        <div class="eyebrow">Services</div>
+        <h2>Recovery Guidance for Every Platform</h2>
+        <p class="sectionDesc">
+          Guidance on official recovery options and account
+          security for different platforms.
+        </p>
       </div>
 
-      <div class="actions">
-        <a class="btn primary"
-           href="https://t.me/YOUR_CHANNEL"
+      <div class="grid">
+        <article class="card">
+          <div class="serviceIcon">📸</div>
+          <h3>Instagram Account Recovery</h3>
+          <p>
+            Guidance for forgotten passwords, lost access,
+            compromised accounts and official recovery forms.
+          </p>
+          <div class="cardActions">
+            <a class="outlineBtn" href="https://www.instagram.com/hacked/"
+               target="_blank" rel="noopener noreferrer">Official Help</a>
+            <a class="askLink csTelegram" href="https://t.me/YOUR_CHANNEL"
+               target="_blank" rel="noopener noreferrer">✈ Ask on Telegram</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="serviceIcon">📘</div>
+          <h3>Facebook Account Recovery</h3>
+          <p>
+            Learn about account access problems, password resets,
+            identity verification and official recovery options.
+          </p>
+          <div class="cardActions">
+            <a class="outlineBtn"
+               href="https://www.facebook.com/login/identify/"
+               target="_blank" rel="noopener noreferrer">Official Help</a>
+            <a class="askLink csTelegram" href="https://t.me/YOUR_CHANNEL"
+               target="_blank" rel="noopener noreferrer">✈ Ask on Telegram</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="serviceIcon">🟢</div>
+          <h3>WhatsApp Account Help</h3>
+          <p>
+            Understand account verification, login issues,
+            account security and official support options.
+          </p>
+          <div class="cardActions">
+            <a class="outlineBtn"
+               href="https://www.whatsapp.com/contact/"
+               target="_blank" rel="noopener noreferrer">Official Help</a>
+            <a class="askLink csTelegram" href="https://t.me/YOUR_CHANNEL"
+               target="_blank" rel="noopener noreferrer">✈ Ask on Telegram</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="serviceIcon">✈️</div>
+          <h3>Telegram Account Help</h3>
+          <p>
+            Guidance for login problems, account security,
+            verification and available official recovery options.
+          </p>
+          <div class="cardActions">
+            <a class="outlineBtn"
+               href="https://telegram.org/support"
+               target="_blank" rel="noopener noreferrer">Official Help</a>
+            <a class="askLink csTelegram" href="https://t.me/YOUR_CHANNEL"
+               target="_blank" rel="noopener noreferrer">✈ Ask on Telegram</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="serviceIcon">📧</div>
+          <h3>Gmail &amp; Email Recovery</h3>
+          <p>
+            Understand password recovery, account verification
+            and official email account recovery procedures.
+          </p>
+          <div class="cardActions">
+            <a class="outlineBtn"
+               href="https://accounts.google.com/signin/recovery"
+               target="_blank" rel="noopener noreferrer">Official Help</a>
+            <a class="askLink csTelegram" href="https://t.me/YOUR_CHANNEL"
+               target="_blank" rel="noopener noreferrer">✈ Ask on Telegram</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="serviceIcon">🛡️</div>
+          <h3>Other Platform &amp; Cyber Help</h3>
+          <p>
+            General account security guidance, privacy awareness
+            and help understanding official support procedures.
+          </p>
+          <div class="cardActions">
+            <a class="outlineBtn" href="#csSafety">Safety Guidelines</a>
+            <a class="askLink csTelegram" href="https://t.me/YOUR_CHANNEL"
+               target="_blank" rel="noopener noreferrer">✈ Ask on Telegram</a>
+          </div>
+        </article>
+      </div>
+
+      <div style="max-width:600px;margin:35px auto 0">
+        <a class="telegramBtn csTelegram" href="https://t.me/YOUR_CHANNEL"
            target="_blank" rel="noopener noreferrer">
-          ➤ &nbsp; Join Our Telegram Channel
-        </a>
-
-        <a class="btn secondary" href="#cyberServices">
-          Explore Services &nbsp; →
+          ✈ Join Cyber Store on Telegram
         </a>
       </div>
     </div>
+  </section>
 
-    <div class="visual" aria-hidden="true">
-      <div class="orbit">
-        <span class="dot d1"></span>
-        <span class="dot d2"></span>
-        <span class="dot d3"></span>
-        <span class="dot d4"></span>
+  <!-- HOW IT WORKS -->
+  <section class="section" id="csSteps">
+    <div class="container">
+      <div class="sectionHead">
+        <div class="eyebrow">How It Works</div>
+        <h2>Three Simple Steps</h2>
+        <p class="sectionDesc">
+          Understand your issue, learn the correct recovery
+          steps and follow security best practices.
+        </p>
+      </div>
 
-        <div class="shield">
-          <div class="lock">🔒</div>
-          <div class="shieldText">CYBER SECURITY</div>
+      <div class="steps">
+        <article class="card">
+          <div class="stepNumber">01</div>
+          <h3>Choose Your Issue</h3>
+          <p>
+            Identify the platform and describe your account
+            access problem without sharing private credentials.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="stepNumber">02</div>
+          <h3>Get Recovery Guidance</h3>
+          <p>
+            Learn the appropriate official recovery steps
+            and important account security precautions.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="stepNumber">03</div>
+          <h3>Stay Connected</h3>
+          <p>
+            Follow our Telegram channel for relevant updates,
+            cybersecurity awareness and helpful guidance.
+          </p>
+        </article>
+      </div>
+
+      <p class="sectionDesc" style="text-align:center;margin-top:25px">
+        We never bypass platform security and cannot guarantee
+        access to any account.
+      </p>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US -->
+  <section class="section" id="csSafety">
+    <div class="container">
+      <div class="sectionHead">
+        <div class="eyebrow">Why Cyber Store</div>
+        <h2>Why Choose Cyber Store?</h2>
+        <p class="sectionDesc">
+          Your security and privacy matter. We focus on
+          explaining legitimate recovery processes and
+          responsible cybersecurity practices.
+        </p>
+      </div>
+
+      <div class="features">
+        <div class="feature">
+          <div class="featureIcon">🔒</div>
+          <span>Privacy-conscious guidance</span>
+        </div>
+        <div class="feature">
+          <div class="featureIcon">📖</div>
+          <span>Guidance based on official recovery procedures</span>
+        </div>
+        <div class="feature">
+          <div class="featureIcon">🎓</div>
+          <span>Clear explanations for beginners</span>
+        </div>
+        <div class="feature">
+          <div class="featureIcon">🛡</div>
+          <span>Account security awareness</span>
+        </div>
+        <div class="feature">
+          <div class="featureIcon">💬</div>
+          <span>Transparent communication</span>
+        </div>
+        <div class="feature">
+          <div class="featureIcon">🚫</div>
+          <span>No unauthorized account access</span>
+        </div>
+        <div class="feature">
+          <div class="featureIcon">⚠️</div>
+          <span>No misleading recovery guarantees</span>
+        </div>
+      </div>
+
+      <div class="notice">
+        <strong>Important disclosure:</strong> Cyber Store is an
+        independent information and guidance service. It is not
+        affiliated with, sponsored by, or officially endorsed by
+        Instagram, Facebook, WhatsApp, Telegram or Google.
+        Account recovery decisions are made by the relevant platform.
+      </div>
+    </div>
+  </section>
+
+  <!-- TRANSPARENT SERVICE INFORMATION -->
+  <section class="section">
+    <div class="container">
+      <div class="sectionHead">
+        <div class="eyebrow">Our Approach</div>
+        <h2>Security Before Everything</h2>
+        <p class="sectionDesc">
+          We explain available recovery options without promising
+          results that we cannot control.
+        </p>
+      </div>
+
+      <div class="stats">
+        <div class="stat">
+          <strong>Official</strong>
+          <span>Recovery Resources</span>
+        </div>
+        <div class="stat">
+          <strong>Privacy First</strong>
+          <span>Security Awareness</span>
+        </div>
+        <div class="stat">
+          <strong>No Guarantees</strong>
+          <span>Honest Guidance</span>
         </div>
       </div>
     </div>
-
   </section>
 
-  <section class="services" id="cyberServices">
+  <!-- REVIEWS -->
+  <section class="section" id="csReviews">
+    <div class="container">
+      <div class="sectionHead">
+        <div class="eyebrow">Reviews</div>
+        <h2>Customer Feedback</h2>
+        <p class="sectionDesc">
+          Genuine customer feedback will be published only
+          with permission and with private details protected.
+        </p>
+      </div>
 
-    <article class="service">
-      <div class="serviceIcon">🔐</div>
-      <h3>Account Recovery Guidance</h3>
-      <p>
-        अपने अकाउंट को वापस पाने के लिए आधिकारिक रिकवरी विकल्पों
-        और सुरक्षा चरणों को समझें।
-      </p>
-    </article>
-
-    <article class="service">
-      <div class="serviceIcon">🛡️</div>
-      <h3>Account Security</h3>
-      <p>
-        मजबूत पासवर्ड, टू-स्टेप वेरिफिकेशन और सुरक्षित लॉगिन
-        की मदद से अपने अकाउंट की सुरक्षा बेहतर करें।
-      </p>
-    </article>
-
-    <article class="service">
-      <div class="serviceIcon">💬</div>
-      <h3>Cyber Help & Guidance</h3>
-      <p>
-        संदिग्ध लॉगिन, हैकिंग की आशंका और अकाउंट सुरक्षा से जुड़ी
-        समस्याओं के लिए उपयोगी मार्गदर्शन प्राप्त करें।
-      </p>
-    </article>
-
-  </section>
-
-  <div class="notice">
-    <strong>Important Security Notice:</strong>
-    हम किसी भी अकाउंट की रिकवरी की गारंटी नहीं देते।
-    अपना पासवर्ड, OTP, रिकवरी कोड या निजी जानकारी किसी के साथ साझा न करें।
-    रिकवरी के लिए संबंधित प्लेटफॉर्म के आधिकारिक विकल्पों का उपयोग करें।
-    यह पेज किसी सोशल मीडिया प्लेटफॉर्म से आधिकारिक रूप से संबद्ध होने का दावा नहीं करता।
-  </div>
-
-  <footer class="footer">
-    <div>© <span id="cyberYear">2026</span> Cyber Store. All rights reserved.</div>
-    <div>Cyber Safety • Account Security • Recovery Guidance</div>
-    <div>
-      <a href="https://t.me/YOUR_CHANNEL"
-         target="_blank" rel="noopener noreferrer">
-        Join Our Telegram
-      </a>
+      <div class="card reviewBox">
+        <div class="reviewIcon">◎</div>
+        <h3>Customer Feedback Coming Soon</h3>
+        <p>
+          We will share authentic reviews when they are available.
+          No fabricated testimonials or ratings.
+        </p>
+      </div>
     </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="container">
+      <div class="sectionHead">
+        <div class="eyebrow">FAQ</div>
+        <h2>Frequently Asked Questions</h2>
+      </div>
+
+      <div class="faq">
+        <details>
+          <summary>Can you guarantee account recovery?</summary>
+          <p>
+            No. Only the platform can determine whether an account
+            can be recovered. We provide guidance, not guarantees.
+          </p>
+        </details>
+
+        <details>
+          <summary>Do I need to share my password or OTP?</summary>
+          <p>
+            No. Never share your password, OTP, recovery codes
+            or two-factor authentication codes with anyone.
+          </p>
+        </details>
+
+        <details>
+          <summary>How can I get help?</summary>
+          <p>
+            Visit the relevant platform's official recovery page.
+            You can also use our Telegram channel for general
+            information and guidance.
+          </p>
+        </details>
+
+        <details>
+          <summary>Are you an official platform support team?</summary>
+          <p>
+            No. Cyber Store is independent and is not an official
+            representative of the platforms listed on this page.
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div style="font-size:25px;margin-bottom:10px">🛡 Cyber Store</div>
+    <p>Cybersecurity Awareness &amp; Account Recovery Guidance</p>
+    <p>
+      Always use official recovery channels. Never pay anyone
+      who promises guaranteed account recovery.
+    </p>
+    <p>© <span id="csYear"></span> Cyber Store. All rights reserved.</p>
   </footer>
 
-</div>
+  <!-- FIXED TELEGRAM CTA -->
+  <div class="stickyTelegram">
+    <a class="telegramBtn csTelegram"
+       href="https://t.me/YOUR_CHANNEL"
+       target="_blank" rel="noopener noreferrer">
+      ✈ Get Updates on Telegram
+    </a>
+  </div>
 
-<script>
-(function () {
-  var year = document.getElementById('cyberYear');
-  if (year) year.textContent = new Date().getFullYear();
-})();
-</script>
+  <script>
+    (function () {
+      var root = document.getElementById('cyberStore');
+      if (!root) return;
+
+      var year = root.querySelector('#csYear');
+      if (year) year.textContent = new Date().getFullYear();
+
+      /*
+       * IMPORTANT:
+       * Replace YOUR_CHANNEL with your real public Telegram
+       * channel username in all Telegram links above.
+       */
+    })();
+  </script>
+</div>
